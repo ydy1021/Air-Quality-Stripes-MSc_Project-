@@ -13,15 +13,11 @@ This repository contains two Python scripts for processing and visualizing globa
 ### generate_images.py: Data Processing & Visualization
 - Processes NetCDF files following pattern: `V5GL0502.HybridPM25c_0p05.Global.??????-??????.nc`
 - Implements non-uniform color classification for scientific visualization
-- Generates high-resolution (300dpi) PNG maps with consistent styling
 - Automatic output directory creation
 - Progress tracking in console
 
 ### slider.py: Interactive Visualization
 - Tkinter-based GUI with smooth year slider (1998-2023)
-- Dynamic image loading and resizing
-- Year display overlay
-- Responsive interface with 850px wide slider
 - Optimized image handling to prevent memory leaks
 
 ## Requirements
