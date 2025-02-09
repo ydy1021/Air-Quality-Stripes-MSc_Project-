@@ -1,21 +1,34 @@
-# PM2.5 Data Processing and Visualization
+# Global PM2.5 Concentration Visualization Toolkit
 
-This repository contains two Python scripts:
-1. **`generate_pm25_maps.py`** - Processes NetCDF files containing PM2.5 data and generates annual PM2.5 concentration maps.
-2. **`pm25_viewer.py`** - Provides a Tkinter-based interactive viewer to browse through the generated PM2.5 images.
+## Overview
+This repository contains two Python scripts for processing and visualizing global PM2.5 concentration data:
 
----
+1. **NetCDF to Image Converter** (`script1.py`)  
+   Processes annual PM2.5 data from NetCDF files and generates standardized visualization maps.
 
-## **1. PM2.5 Data Processing (`generate_pm25_maps.py`)**
-This script reads NetCDF files containing PM2.5 concentration data, extracts relevant information, and generates yearly images.
+2. **Interactive Viewer** (`script2.py`)  
+   Provides a GUI application with a time slider to explore PM2.5 concentration maps across years (1998-2023).
 
-### **Features**
-✅ Reads PM2.5 data from NetCDF files.  
-✅ Extracts relevant geospatial data (longitude, latitude).  
-✅ Uses a non-uniform colormap (`plasma`) for better visualization.  
-✅ Saves output images as PNG files with appropriate labels.  
+## Features
+### Script 1: Data Processing & Visualization
+- Processes NetCDF files following pattern: `V5GL0502.HybridPM25c_0p05.Global.??????-??????.nc`
+- Implements non-uniform color classification for scientific visualization
+- Generates high-resolution (300dpi) PNG maps with consistent styling
+- Automatic output directory creation
+- Progress tracking in console
 
-### **Dependencies**
-Before running the script, install the required libraries:
+### Script 2: Interactive Visualization
+- Tkinter-based GUI with smooth year slider (1998-2023)
+- Dynamic image loading and resizing
+- Year display overlay
+- Responsive interface with 850px wide slider
+- Optimized image handling to prevent memory leaks
+
+## Requirements
+### Python Libraries
+- Core:  
+  `xarray`, `netCDF4`, `matplotlib`, `pillow`, `tkinter`
+
+Install with:
 ```bash
-pip install xarray matplotlib numpy
+pip install xarray netCDF4 matplotlib pillow
