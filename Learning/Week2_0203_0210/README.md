@@ -3,21 +3,21 @@
 ## Overview
 This repository contains two Python scripts for processing and visualizing global PM2.5 concentration data:
 
-1. **NetCDF to Image Converter** (`script1.py`)  
+1. **NetCDF to Image Converter** (`generate_images.py`)  
    Processes annual PM2.5 data from NetCDF files and generates standardized visualization maps.
 
-2. **Interactive Viewer** (`script2.py`)  
+2. **Interactive Viewer** (`slider.py`)  
    Provides a GUI application with a time slider to explore PM2.5 concentration maps across years (1998-2023).
 
 ## Features
-### Script 1: Data Processing & Visualization
+### generate_images.py: Data Processing & Visualization
 - Processes NetCDF files following pattern: `V5GL0502.HybridPM25c_0p05.Global.??????-??????.nc`
 - Implements non-uniform color classification for scientific visualization
 - Generates high-resolution (300dpi) PNG maps with consistent styling
 - Automatic output directory creation
 - Progress tracking in console
 
-### Script 2: Interactive Visualization
+### slider.py: Interactive Visualization
 - Tkinter-based GUI with smooth year slider (1998-2023)
 - Dynamic image loading and resizing
 - Year display overlay
