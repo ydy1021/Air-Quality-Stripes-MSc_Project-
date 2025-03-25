@@ -1,12 +1,12 @@
 import pandas as pd
 
 city_data = pd.read_excel("V1pt6_Cities_Data_PM2pt5.xlsx", engine="openpyxl")
-print("Excel中的年份：", city_data["Year"].unique())
-print("Excel中的城市：", list(city_data.columns[1:]))
+print("Year in Excel:", city_data["Year"].unique())
+print("City in Excel:", list(city_data.columns[1:]))
 
 bubble_text = pd.read_csv("bubbles_text.csv", index_col=0)
-print("CSV中的年份（行索引）：", list(bubble_text.index))
-print("CSV中的城市（列）：", list(bubble_text.columns))
+print("CSV中的年份"Row":", list(bubble_text.index))
+print("CSV中的城市"Col"：", list(bubble_text.columns))
 
 def get_pm25(city, year):
     row = city_data[city_data["Year"] == year]
