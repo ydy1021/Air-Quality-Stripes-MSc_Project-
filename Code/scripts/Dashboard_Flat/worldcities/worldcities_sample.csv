@@ -1,0 +1,139 @@
+city	city_ascii	lat	lng	country	iso2	iso3	admin_name	capital	population	id
+Tokyo	Tokyo	35.687	139.7495	Japan	JP	JPN	Tōkyō	primary	37785000	1392685764
+Jakarta	Jakarta	-6.175	106.8275	Indonesia	ID	IDN	Jakarta	primary	33756000	1360771077
+Delhi	Delhi	28.61	77.23	India	IN	IND	Delhi	admin	32226000	1356872604
+Guangzhou	Guangzhou	23.13	113.26	China	CN	CHN	Guangdong	admin	26940000	1156237133
+Mumbai	Mumbai	19.0761	72.8775	India	IN	IND	Mahārāshtra	admin	24973000	1356226629
+Manila	Manila	14.5958	120.9772	Philippines	PH	PHL	Manila	primary	24922000	1608618140
+Shanghai	Shanghai	31.2286	121.4747	China	CN	CHN	Shanghai	admin	24073000	1156073548
+São Paulo	Sao Paulo	-23.5504	-46.6339	Brazil	BR	BRA	São Paulo	admin	23086000	1076532519
+Seoul	Seoul	37.5667	126.9833	"Korea, South"	KR	KOR	Seoul	primary	23016000	1410836482
+Mexico City	Mexico City	19.4333	-99.1333	Mexico	MX	MEX	Ciudad de México	primary	21804000	1484247881
+Kolkāta	Kolkata	22.5675	88.37	India	IN	IND	West Bengal	admin	21747000	1356060520
+Cairo	Cairo	30.0444	31.2358	Egypt	EG	EGY	Al Qāhirah	primary	20296000	1818253931
+Karachi	Karachi	24.86	67.01	Pakistan	PK	PAK	Sindh	admin	20249000	1586129469
+Dhaka	Dhaka	23.7289	90.3944	Bangladesh	BD	BGD	Dhaka	primary	19134000	1050529279
+New York	New York	40.6943	-73.9249	United States	US	USA	New York		18832416	1840034016
+Beijing	Beijing	39.9067	116.3975	China	CN	CHN	Beijing	primary	18522000	1156228865
+Bangkok	Bangkok	13.7525	100.4942	Thailand	TH	THA	Krung Thep Maha Nakhon	primary	18007000	1764068610
+Shenzhen	Shenzhen	22.5415	114.0596	China	CN	CHN	Guangdong	minor	17619000	1156158707
+Moscow	Moscow	55.7506	37.6175	Russia	RU	RUS	Moskva	primary	17332000	1643318494
+Buenos Aires	Buenos Aires	-34.6036	-58.3814	Argentina	AR	ARG	"Buenos Aires, Ciudad Autónoma de"	primary	16710000	1032717330
+Lagos	Lagos	6.455	3.3841	Nigeria	NG	NGA	Lagos	minor	16637000	1566593751
+Bangalore	Bangalore	12.9789	77.5917	India	IN	IND	Karnātaka	admin	15386000	1356410365
+Ho Chi Minh City	Ho Chi Minh City	10.7756	106.7019	Vietnam	VN	VNM	H�?Chí Minh	admin	15136000	1704774326
+Ōsaka	Osaka	34.6939	135.5022	Japan	JP	JPN	Ōsaka	admin	15126000	1392419823
+Chengdu	Chengdu	30.66	104.0633	China	CN	CHN	Sichuan	admin	14645000	1156421555
+Istanbul	Istanbul	41.0136	28.955	Turkey	TR	TUR	İstanbul	admin	14441000	1792756324
+Tehran	Tehran	35.6889	51.3897	Iran	IR	IRN	Tehrān	primary	14148000	1364305026
+Kinshasa	Kinshasa	-4.3219	15.3119	Congo (Kinshasa)	CD	COD	Kinshasa	primary	12836000	1180000363
+Rio de Janeiro	Rio de Janeiro	-22.9111	-43.2056	Brazil	BR	BRA	Rio de Janeiro	admin	12592000	1076887657
+Chennai	Chennai	13.0825	80.275	India	IN	IND	Tamil Nādu	admin	12395000	1356374944
+Xi’an	Xi'an	34.2611	108.9422	China	CN	CHN	Shaanxi	admin	12328000	1156244079
+Lahore	Lahore	31.5497	74.3436	Pakistan	PK	PAK	Punjab	admin	12306000	1586801463
+Chongqing	Chongqing	29.5637	106.5504	China	CN	CHN	Chongqing	admin	12135000	1156936556
+Los Angeles	Los Angeles	34.1141	-118.4068	United States	US	USA	California		11885717	1840020491
+London	London	51.5072	-0.1275	United Kingdom	GB	GBR	"London, City of"	primary	11262000	1826645935
+Paris	Paris	48.8567	2.3522	France	FR	FRA	Île-de-France	primary	11060000	1250015082
+Linyi	Linyi	35.1038	118.3564	China	CN	CHN	Shandong		10820000	1156086320
+Dongguan	Dongguan	23.021	113.752	China	CN	CHN	Guangdong	minor	10646000	1156478242
+Baoding	Baoding	38.874	115.464	China	CN	CHN	Hebei	minor	10546831	1156256829
+Hyderābād	Hyderabad	17.3617	78.4747	India	IN	IND	Telangāna	admin	10494000	1356871768
+Tianjin	Tianjin	39.1336	117.2054	China	CN	CHN	Tianjin	admin	10368000	1156174046
+Lima	Lima	-12.06	-77.0375	Peru	PE	PER	Lima	primary	10320000	1604728603
+Wuhan	Wuhan	30.5934	114.3046	China	CN	CHN	Hubei	admin	10251000	1156117184
+Nanyang	Nanyang	32.9902	112.5285	China	CN	CHN	Henan		9577771	1156192287
+Hangzhou	Hangzhou	30.267	120.153	China	CN	CHN	Zhejiang	admin	9523000	1156275243
+Nagoya	Nagoya	35.1833	136.9	Japan	JP	JPN	Aichi	admin	9197000	1392407472
+Luanda	Luanda	-8.8383	13.2344	Angola	AO	AGO	Luanda	primary	9051000	1024949724
+Foshan	Foshan	23.0214	113.1216	China	CN	CHN	Guangdong	minor	9042500	1156738403
+Kuala Lumpur	Kuala Lumpur	3.1686	101.698	Malaysia	MY	MYS	Kuala Lumpur	primary	8911000	1458988644
+Zhoukou	Zhoukou	33.6367	114.7014	China	CN	CHN	Henan	minor	8677800	1156272098
+Tongshan	Tongshan	34.261	117.1859	China	CN	CHN	Jiangsu	minor	8669000	1156241678
+Hanoi	Hanoi	21	105.85	Vietnam	VN	VNM	Hà Nội	primary	8587100	1704413791
+Chicago	Chicago	41.8375	-87.6866	United States	US	USA	Illinois		8489066	1840000494
+Nanjing	Nanjing	32.0608	118.7789	China	CN	CHN	Jiangsu	admin	8422000	1156644065
+Heze	Heze	35.2343	115.4796	China	CN	CHN	Shandong	minor	8287693	1156225008
+Pune	Pune	18.5203	73.8567	India	IN	IND	Mahārāshtra		8231000	1356081074
+Jining	Jining	35.4151	116.5871	China	CN	CHN	Shandong		8081905	1156504601
+Bogotá	Bogota	4.7111	-74.0722	Colombia	CO	COL	Bogotá	primary	8034649	1170483426
+Ahmedabad	Ahmedabad	23.0225	72.5714	India	IN	IND	Gujarāt	minor	8009000	1356304381
+Shenyang	Shenyang	41.8025	123.4281	China	CN	CHN	Liaoning	admin	7964000	1156309382
+Dar es Salaam	Dar es Salaam	-6.8161	39.2803	Tanzania	TZ	TZA	Dar es Salaam	admin	7962000	1834843853
+Khartoum	Khartoum	15.6031	32.5265	Sudan	SD	SDN	Khartoum	primary	7869000	1729268475
+Johannesburg	Johannesburg	-26.2044	28.0456	South Africa	ZA	ZAF	Gauteng	admin	7860781	1710550792
+Fuyang	Fuyang	32.89	115.814	China	CN	CHN	Anhui		7599913	1156248008
+Hong Kong	Hong Kong	22.3	114.2	Hong Kong	HK	HKG		primary	7450000	1344982653
+Ganzhou	Ganzhou	25.831	114.933	China	CN	CHN	Jiangxi	minor	7396873	1156832475
+Shangqiu	Shangqiu	34.415	115.656	China	CN	CHN	Henan		7325300	1156805441
+Cangzhou	Cangzhou	38.3047	116.8387	China	CN	CHN	Hebei	minor	7300783	1156698069
+Riyadh	Riyadh	24.65	46.71	Saudi Arabia	SA	SAU	"Ar Riyā�?,primary"""	7237000	1682999334	
+Santiago	Santiago	-33.4372	-70.6506	Chile	CL	CHL	Región Metropolitana	primary	7171000	1152554349
+Zhumadian	Zhumadian	33.014	114.022	China	CN	CHN	Henan		7008427	1156184822
+Zhanjiang	Zhanjiang	21.2701	110.3575	China	CN	CHN	Guangdong	minor	6981236	1156502170
+Rangoon	Rangoon	16.795	96.16	Burma	MM	MMR	Yangon	primary	6874000	1104616656
+Yancheng	Yancheng	33.35	120.1569	China	CN	CHN	Jiangsu	minor	6709629	1156995410
+Bijie	Bijie	27.284	105.292	China	CN	CHN	Guizhou		6686100	1156018927
+Xingtai	Xingtai	37.0717	114.5048	China	CN	CHN	Hebei	minor	6645766	1156294952
+Hengyang	Hengyang	26.894	112.572	China	CN	CHN	Hunan		6645243	1156696884
+Shaoyang	Shaoyang	27.2395	111.4679	China	CN	CHN	Hunan		6563520	1156310366
+Surabaya	Surabaya	-7.2458	112.7378	Indonesia	ID	IDN	Jawa Timur	admin	6556000	1360484663
+Sūrat	Surat	21.205	72.84	India	IN	IND	Gujarāt		6538000	1356758738
+Quanzhou	Quanzhou	24.8744	118.6757	China	CN	CHN	Fujian	minor	6480000	1156829655
+Shangrao	Shangrao	28.4551	117.9431	China	CN	CHN	Jiangxi	minor	6435300	1156405492
+Zunyi	Zunyi	27.722	107.031	China	CN	CHN	Guizhou		6270700	1156539782
+Madrid	Madrid	40.4169	-3.7033	Spain	ES	ESP	Madrid	primary	6211000	1724616994
+Baghdad	Baghdad	33.3153	44.3661	Iraq	IQ	IRQ	Baghdād	primary	6183000	1368596238
+Maoming	Maoming	21.6627	110.9255	China	CN	CHN	Guangdong	minor	6174050	1156568722
+Miami	Miami	25.784	-80.2101	United States	US	USA	Florida		6113982	1840015149
+Xinyang	Xinyang	32.149	114.091	China	CN	CHN	Henan		6109106	1156273453
+Houston	Houston	29.786	-95.3885	United States	US	USA	Texas		6046392	1840020925
+Singapore	Singapore	1.3	103.8	Singapore	SG	SGP		primary	5983000	1702341327
+Prayagraj	Prayagraj	25.4358	81.8464	India	IN	IND	Uttar Pradesh		5954391	1356718332
+Huanggang	Huanggang	30.4537	114.8724	China	CN	CHN	Hubei	minor	5882719	1156200037
+Dalian	Dalian	38.9	121.6	China	CN	CHN	Liaoning		5871474	1156175472
+Ankara	Ankara	39.93	32.85	Turkey	TR	TUR	Ankara	primary	5864049	1792572891
+Dallas	Dallas	32.7935	-96.7667	United States	US	USA	Texas		5843632	1840019440
+Qingdao	Qingdao	36.0669	120.3827	China	CN	CHN	Shandong	minor	5818255	1156112588
+Yulin	Yulin	22.654	110.181	China	CN	CHN	Guangxi	minor	5796766	1156901312
+Liaocheng	Liaocheng	36.4559	115.9852	China	CN	CHN	Shandong	minor	5789863	1156006600
+Douala	Douala	4.05	9.7	Cameroon	CM	CMR	Littoral	admin	5768400	1120494607
+Qujing	Qujing	25.491	103.796	China	CN	CHN	Yunnan		5765775	1156747998
+Nangandao	Nangandao	35.3036	113.9268	China	CN	CHN	Henan	minor	5708191	1156127660
+Addis Ababa	Addis Ababa	9.03	38.74	Ethiopia	ET	ETH	Ādīs Ābeba	primary	5704000	1231824991
+Philadelphia	Philadelphia	40.0077	-75.1339	United States	US	USA	Pennsylvania		5696588	1840000673
+Toronto	Toronto	43.7417	-79.3733	Canada	CA	CAN	Ontario	admin	5647656	1124279679
+Zhengzhou	Zhengzhou	34.764	113.684	China	CN	CHN	Henan	admin	5621593	1156183137
+Nanchong	Nanchong	30.8372	106.1106	China	CN	CHN	Sichuan	minor	5607565	1156762337
+Jinan	Jinan	36.6702	117.0207	China	CN	CHN	Shandong	admin	5606374	1156972469
+Giza	Giza	29.987	31.2118	Egypt	EG	EGY	Al Jīzah	admin	5598402	1818925479
+Saint Petersburg	Saint Petersburg	59.9375	30.3086	Russia	RU	RUS	Sankt-Peterburg	admin	5597763	1643616350
+Jieyang	Jieyang	23.551	116.3727	China	CN	CHN	Guangdong	minor	5577814	1156260378
+Dezhou	Dezhou	37.436	116.359	China	CN	CHN	Shandong	minor	5568235	1156524080
+Nairobi	Nairobi	-1.2864	36.8172	Kenya	KE	KEN	Nairobi City	primary	5545000	1404000661
+Guadalajara	Guadalajara	20.6767	-103.3475	Mexico	MX	MEX	Jalisco	admin	5525000	1484950208
+Tai’an	Tai'an	36.202	117.087	China	CN	CHN	Shandong		5472217	1156095188
+Dazhou	Dazhou	31.2093	107.4678	China	CN	CHN	Sichuan	minor	5385422	1156834076
+Belo Horizonte	Belo Horizonte	-19.9281	-43.9419	Brazil	BR	BRA	Minas Gerais	admin	5328000	1076967355
+Suzhou	Suzhou	33.648	116.964	China	CN	CHN	Anhui		5324476	1156871297
+Monterrey	Monterrey	25.6844	-100.3181	Mexico	MX	MEX	Nuevo León	admin	5324281	1484559591
+Yongzhou	Yongzhou	26.42	111.613	China	CN	CHN	Hunan		5289824	1156694479
+Changde	Changde	29.031	111.699	China	CN	CHN	Hunan	minor	5279102	1156449091
+Xiangyang	Xiangyang	32.01	112.122	China	CN	CHN	Hubei	minor	5260951	1156107325
+Atlanta	Atlanta	33.7628	-84.422	United States	US	USA	Georgia	admin	5211164	1840013660
+Pudong	Pudong	31.2347	121.5064	China	CN	CHN	Shanghai	minor	5187200	1156644508
+Washington	Washington	38.9047	-77.0163	United States	US	USA	District of Columbia	primary	5146120	1840006060
+Zhaotong	Zhaotong	27.338	103.717	China	CN	CHN	Yunnan		5092611	1156924687
+Zhangzhou	Zhangzhou	24.513	117.647	China	CN	CHN	Fujian	minor	5054328	1156241637
+Yueyang	Yueyang	29.3647	113.1309	China	CN	CHN	Hunan	minor	5051922	1156586314
+Melbourne	Melbourne	-37.8142	144.9631	Australia	AU	AUS	Victoria	admin	5031195	1036533631
+Yichun	Yichun	27.816	114.417	China	CN	CHN	Jiangxi	minor	5007702	1156229590
+Abidjan	Abidjan	5.3364	-4.0267	Côte d’Ivoire	CI	CIV	Abidjan	primary	4980000	1384207980
+Guilin	Guilin	25.275	110.296	China	CN	CHN	Guangxi	minor	4931137	1156235364
+Pingdingshan	Pingdingshan	33.7666	113.1926	China	CN	CHN	Henan		4904701	1156735124
+Alexandria	Alexandria	31.1975	29.8925	Egypt	EG	EGY	Al Iskandarīyah	admin	4870000	1818695837
+Bozhou	Bozhou	33.8463	115.7786	China	CN	CHN	Anhui		4850657	1156356860
+Sydney	Sydney	-33.8667	151.2	Australia	AU	AUS	New South Wales	admin	4840600	1036074917
+Barcelona	Barcelona	41.3833	2.1833	Spain	ES	ESP	Catalonia	admin	4800000	1724594040
+Yuncheng	Yuncheng	35.0267	111.007	China	CN	CHN	Shanxi		4774508	1156705644
+Cape Town	Cape Town	-33.9253	18.4239	South Africa	ZA	ZAF	Western Cape	primary	4770313	1710680650
