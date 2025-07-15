@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Map from './Map';
 import TrendChart from './TrendChart';
 import MultiTrendCharts from './MultiTrendCharts';
+import ColorLegend from './ColorLegend';
 import './App.css';
 
 function App() {
@@ -31,14 +32,19 @@ function App() {
   return (
     <div className="App">
       <h1>World PM2.5 Trend</h1>
-      <div style={{textAlign: 'center', marginBottom: 16}}>
-        <button onClick={() => handleModeChange('compare')} disabled={mode === 'compare'}>Compare Mode</button>
-        <button onClick={() => handleModeChange('multi')} disabled={mode === 'multi'}>Multi Mode</button>
+      <div style={{ position: 'relative' }}>
+        <div style={{textAlign: 'center', marginBottom: 16}}>
+          <button onClick={() => handleModeChange('compare')} disabled={mode === 'compare'}>Compare Mode</button>
+          <button onClick={() => handleModeChange('multi')} disabled={mode === 'multi'}>Multi Mode</button>
+        </div>
+        <ColorLegend />
+        <div style={{ marginTop: '80px' }}> {/* 添加这个容器来移动地图 */}
+          <Map onCitySelect={handleCitySelect} selectedCities={selectedCities} maxCities={mode === 'multi' ? 3 : 2} />
+          {mode === 'compare'
+            ? <TrendChart selectedCities={selectedCities} />
+            : <MultiTrendCharts selectedCities={selectedCities} />}
+        </div>
       </div>
-      <Map onCitySelect={handleCitySelect} selectedCities={selectedCities} maxCities={mode === 'multi' ? 3 : 2} />
-      {mode === 'compare'
-        ? <TrendChart selectedCities={selectedCities} />
-        : <MultiTrendCharts selectedCities={selectedCities} />}
     </div>
   );
 }
