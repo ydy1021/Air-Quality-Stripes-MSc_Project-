@@ -14,7 +14,7 @@ function ColorLegend() {
       boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
       border: '1px solid #ccc'
     }}>
-      <svg width={320} height={70}>
+      <svg width={320} height={60}>
         <text
           x={10}
           y={15}
