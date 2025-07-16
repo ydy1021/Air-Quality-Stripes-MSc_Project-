@@ -10,7 +10,7 @@ function TrendChart({ selectedCities }) {
 
   useEffect(() => {
     d3.csv(PM25_CSV).then(raw => {
-      // 第一列是年份，后面是城市
+      // First column is year, followed by cities
       const years = raw.map(row => +row['Year']);
       setYears(years);
       setData(raw);
@@ -25,24 +25,24 @@ function TrendChart({ selectedCities }) {
       .attr('height', height);
     svg.selectAll('*').remove();
 
-    // 取城市名格式
+    // Get city name format
     const getCol = c => `${c.city}, ${c.country}`;
     const city1 = getCol(selectedCities[0]);
     const city2 = getCol(selectedCities[1]);
     const y1 = data.map(row => +row[city1]);
     const y2 = data.map(row => +row[city2]);
-    // 调试打印
-
+    
+    // Debug prints
     console.log('city1', city1);
-console.log('city2', city2);
-console.log('表头', Object.keys(data[0]));
-console.log('示例行', data[0]);
+    console.log('city2', city2);
+    console.log('headers', Object.keys(data[0]));
+    console.log('sample row', data[0]);
 
-    // x/y 轴
+    // x/y axes
     const x = d3.scaleLinear().domain(d3.extent(years)).range([margin.left, width - margin.right]);
     const y = d3.scaleLinear().domain([0, d3.max([...y1, ...y2]) * 1.1]).range([height - margin.bottom, margin.top]);
 
-    // 画线
+    // Draw lines
     const line = d3.line()
       .x((d, i) => x(years[i]))
       .y(d => y(d));
@@ -60,7 +60,7 @@ console.log('示例行', data[0]);
       .attr('stroke-width', 2.5)
       .attr('d', line);
 
-    // 画点
+    // Draw points
     svg.selectAll('.dot1')
       .data(y1)
       .enter()
@@ -80,7 +80,7 @@ console.log('示例行', data[0]);
       .attr('r', 3)
       .attr('fill', '#d32f2f');
 
-    // 轴
+    // Axes
     svg.append('g')
       .attr('transform', `translate(0,${height - margin.bottom})`)
       .call(d3.axisBottom(x).tickFormat(d3.format('d')));
@@ -88,7 +88,7 @@ console.log('示例行', data[0]);
       .attr('transform', `translate(${margin.left},0)`)
       .call(d3.axisLeft(y));
 
-    // 标题和图例
+    // Title and legend
     svg.append('text')
       .attr('x', width / 2)
       .attr('y', margin.top / 2)
@@ -97,13 +97,13 @@ console.log('示例行', data[0]);
       .attr('font-weight', 'bold')
       .text(`${city1} vs ${city2} `);
 
-    // 图例上下分布，靠右上角
-    const legendX = width - margin.right - 150; // 再往左移，避免超出画布
-    const legendY1 = margin.top; // 第一行
-    const legendY2 = margin.top + 25; // 第二行
+    // Legend distributed vertically, aligned to top-right
+    const legendX = width - margin.right - 150; // Move left to avoid overflow
+    const legendY1 = margin.top; // First row
+    const legendY2 = margin.top + 25; // Second row
     const legendSpacing = 18;
 
-    // 第一个图例
+    // First legend item
     svg.append('circle')
       .attr('cx', legendX)
       .attr('cy', legendY1)
@@ -117,7 +117,7 @@ console.log('示例行', data[0]);
       .attr('font-size', 13)
       .attr('text-anchor', 'start');
 
-    // 第二个图例
+    // Second legend item
     svg.append('circle')
       .attr('cx', legendX)
       .attr('cy', legendY2)

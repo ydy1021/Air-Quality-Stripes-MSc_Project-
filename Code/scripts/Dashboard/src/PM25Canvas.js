@@ -8,59 +8,59 @@ function getColor(val) {
   return c_list[c_list.length - 1];
 }
 
-// 将RGB字符串转换为RGB数组
+// Convert RGB string to RGB array
 function parseRGB(rgbString) {
   const match = rgbString.match(/rgb\((\d+),(\d+),(\d+)\)/);
   if (match) {
     return [parseInt(match[1]), parseInt(match[2]), parseInt(match[3])];
   }
-  return [224, 224, 224]; // 默认灰色
+  return [224, 224, 224]; // Default gray
 }
 
 class PM25Canvas {
   static renderPM25Data(ctx, gridData, projection, transform, cities, width, height) {
     if (!ctx || !gridData || !projection) return;
 
-    // 清空画布
+    // Clear canvas
     ctx.clearRect(0, 0, width, height);
     
     let renderedCount = 0;
     
-    // 创建城市点位置集合，用于避让
+    // Create city position set for avoidance
     const cityPositions = cities.map(city => {
       const projected = projection([city.lng, city.lat]);
       if (!projected) return null;
       
-      // 应用缩放变换
+      // Apply zoom transformation
       const transformedX = projected[0] * transform.k + transform.x;
       const transformedY = projected[1] * transform.k + transform.y;
       
       return { x: transformedX, y: transformedY };
     }).filter(pos => pos !== null);
     
-    // 创建ImageData对象用于批量像素操作
+    // Create ImageData object for batch pixel operations
     const imageData = ctx.createImageData(width, height);
     const data = imageData.data;
     
-    // 网格大小（根据缩放级别调整）
+    // Grid size (adjusted based on zoom level)
     const baseGridSize = 2;
     const gridSize = Math.max(1, Math.round(baseGridSize * transform.k));
-    const cityAvoidRadius = 8; // 城市点周围的避让半径
+    const cityAvoidRadius = 8; // Radius around city points to avoid
     
-    // 渲染每个网格点
+    // Render each grid point
     for (const point of gridData) {
       const projected = projection([point.lon, point.lat]);
       if (!projected) continue;
       
-      // 应用缩放变换
+      // Apply zoom transformation
       const transformedX = projected[0] * transform.k + transform.x;
       const transformedY = projected[1] * transform.k + transform.y;
       
-      // 视口裁剪
+      // Viewport clipping
       if (transformedX < -gridSize || transformedX >= width + gridSize || 
           transformedY < -gridSize || transformedY >= height + gridSize) continue;
       
-      // 检查是否与城市点冲突
+      // Check for collision with city points
       const tooCloseToCity = cityPositions.some(cityPos => {
         const distance = Math.sqrt(
           Math.pow(transformedX - cityPos.x, 2) + 
@@ -69,18 +69,18 @@ class PM25Canvas {
         return distance < cityAvoidRadius;
       });
       
-      if (tooCloseToCity) continue; // 跳过城市点附近的网格
+      if (tooCloseToCity) continue; // Skip grid points near cities
       
-      // 获取颜色
+      // Get color
       const color = getColor(point.value);
       const [r, g, b] = parseRGB(color);
       
-      // 增强颜色饱和度
+      // Enhance color saturation
       const enhancedR = Math.min(255, Math.round(r * 1.1));
       const enhancedG = Math.min(255, Math.round(g * 1.1));
       const enhancedB = Math.min(255, Math.round(b * 1.1));
       
-      // 绘制网格点（小矩形）
+      // Draw grid point (small rectangle)
       const startX = Math.max(0, Math.floor(transformedX - gridSize/2));
       const endX = Math.min(width - 1, Math.floor(transformedX + gridSize/2));
       const startY = Math.max(0, Math.floor(transformedY - gridSize/2));
@@ -99,7 +99,7 @@ class PM25Canvas {
       renderedCount++;
     }
     
-    // 将ImageData绘制到canvas
+    // Draw ImageData to canvas
     ctx.putImageData(imageData, 0, 0);
     
     console.log(`Canvas rendered ${renderedCount} grid points at scale ${transform.k.toFixed(2)}`);

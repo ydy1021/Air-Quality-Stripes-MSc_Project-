@@ -3,7 +3,7 @@ import * as d3 from 'd3';
 
 const PM25_CSV = 'V1pt6_Cities_Data_PM2pt5.csv';
 
-// 色阶区间和颜色，与 10_cities_vis.py 保持一致
+// Color intervals and colors, consistent with 10_cities_vis.py
 const bounds = [0, 5, 10, 15, 20, 30, 40, 50, 60, 70, 80, 90, 99999];
 const c_list = [
   'rgb(164,255,255)',  // 0 - 5
@@ -42,7 +42,7 @@ function SingleTrend({ city, country, data, years }) {
     const y = data.map(row => +row[col]);
     if (!y.length || y.some(isNaN)) return;
 
-    // 1. 色带背景
+    // 1. Color band background
     const bandHeight = height - margin.top - margin.bottom;
     const bandY = margin.top;
     const bandWidth = (width - margin.left - margin.right) / years.length;
@@ -56,11 +56,11 @@ function SingleTrend({ city, country, data, years }) {
         .attr('stroke', 'none');
     });
 
-    // 2. Y轴范围固定 0~120
+    // 2. Fixed Y-axis range 0~120
     const x = d3.scaleLinear().domain([years[0], years[years.length-1]+1]).range([margin.left, width - margin.right]);
     const yScale = d3.scaleLinear().domain([0, 120]).range([height - margin.bottom, margin.top]);
 
-    // 3. 白色粗折线
+    // 3. White thick line
     const line = d3.line()
       .x((d, i) => x(years[i] + 0.5))
       .y(d => yScale(d));
@@ -71,27 +71,26 @@ function SingleTrend({ city, country, data, years }) {
       .attr('stroke-width', 2)
       .attr('d', line);
 
-    // 4. 坐标轴
-// 控制最多显示 8 个刻度
-const tickCount = 8;
-const tickInterval = Math.ceil(years.length / tickCount);
+    // 4. Axes
+    // Control maximum 8 ticks
+    const tickCount = 8;
+    const tickInterval = Math.ceil(years.length / tickCount);
 
-// 选择固定间隔的年份作为刻度
-const tickVals = [];
-for (let i = 0; i < years.length; i += tickInterval) {
-  tickVals.push(years[i]);
-}
+    // Select fixed interval years as ticks
+    const tickVals = [];
+    for (let i = 0; i < years.length; i += tickInterval) {
+      tickVals.push(years[i]);
+    }
 
-// 确保最后一年始终存在于刻度中
-const lastYear = years[years.length - 1];
-if (!tickVals.includes(lastYear)) {
-  tickVals.push(lastYear);
-}
+    // Ensure the last year is always included in ticks
+    const lastYear = years[years.length - 1];
+    if (!tickVals.includes(lastYear)) {
+      tickVals.push(lastYear);
+    }
 
-// 去重，防止重复刻度导致重叠
-const uniqueTickVals = Array.from(new Set(tickVals));
+    // Remove duplicates to prevent overlapping ticks
+    const uniqueTickVals = Array.from(new Set(tickVals));
 
-    
     svg.append('g')
       .attr('transform', `translate(0,${height - margin.bottom})`)
       .call(d3.axisBottom(x).tickFormat(d3.format('d')).tickValues(uniqueTickVals));
@@ -99,7 +98,7 @@ const uniqueTickVals = Array.from(new Set(tickVals));
       .attr('transform', `translate(${margin.left},0)`)
       .call(d3.axisLeft(yScale).ticks(6));
 
-    // 5. 标题
+    // 5. Title
     svg.append('text')
       .attr('x', width / 2)
       .attr('y', margin.top / 2)
@@ -108,7 +107,7 @@ const uniqueTickVals = Array.from(new Set(tickVals));
       .attr('font-weight', 'bold')
       .text(`${city}, ${country}\n`);
 
-    // 6. Y轴标签（右侧，白色）
+    // 6. Y-axis label (right side, white)
     svg.append('text')
       .attr('x', width - margin.right + 5)
       .attr('y', margin.top)
@@ -117,9 +116,9 @@ const uniqueTickVals = Array.from(new Set(tickVals));
       .attr('fill', 'white')
       .attr('font-weight', 'bold')
       .attr('transform', `rotate(-90,${width - margin.right + 5},${margin.top + bandHeight/2})`)
-     // .text('PM2.5 concentration (µg/m³)');
+      // .text('PM2.5 concentration (µg/m³)');
 
-    // 7. 去除边框
+    // 7. Remove border
     svg.selectAll('rect.background').remove();
   }, [data, years, city, country]);
 

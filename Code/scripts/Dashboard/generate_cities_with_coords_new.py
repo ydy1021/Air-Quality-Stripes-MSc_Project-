@@ -1,12 +1,12 @@
 import csv
 import json
 
-# 文件路径
+# File paths
 cities_data_path = "V1pt6_Cities_Data_PM2pt5.csv"
 worldcities_path = "worldcities/worldcities.csv"
 output_path = "cities_with_coords.json"
 
-# 第一步：从 worldcities.csv 中建立 (city, country) 到 (lat, lng) 的映射
+# Step 1: Build (city, country) to (lat, lng) mapping from worldcities.csv
 city_coords = {}
 
 with open(worldcities_path, encoding="utf-8") as f:
@@ -18,12 +18,12 @@ with open(worldcities_path, encoding="utf-8") as f:
         lng = float(row["lng"])
         city_coords[(city, country)] = {"lat": lat, "lng": lng}
 
-# 第二步：从 PM2.5 数据文件中提取城市和国家（表头就是城市和国家组合）
+# Step 2: Extract cities and countries from PM2.5 data file (headers are city-country combinations)
 with open(cities_data_path, encoding="utf-8") as f:
     reader = csv.reader(f)
     headers = next(reader)
 
-# 提取所有的 (city, country) 对，跳过第一列 "Year"
+# Extract all (city, country) pairs, skip first column "Year"
 city_country_pairs = []
 for header in headers[1:]:
     if "," in header:
@@ -33,7 +33,7 @@ for header in headers[1:]:
             country = parts[1].strip()
             city_country_pairs.append((city, country))
 
-# 第三步：匹配经纬度
+# Step 3: Match coordinates
 matched_cities = []
 unmatched_cities = []
 
@@ -49,15 +49,15 @@ for city, country in city_country_pairs:
     else:
         unmatched_cities.append((city, country))
 
-# 第四步：写入 JSON 文件
+# Step 4: Write to JSON file
 with open(output_path, "w", encoding="utf-8") as f:
     json.dump(matched_cities, f, indent=2, ensure_ascii=False)
 
-print(f"成功写入 {output_path}，共匹配城市数量：{len(matched_cities)}")
-print(f"未匹配城市数量：{len(unmatched_cities)}")
+print(f"Successfully wrote to {output_path}, total matched cities: {len(matched_cities)}")
+print(f"Number of unmatched cities: {len(unmatched_cities)}")
 
-# 打印未匹配的城市列表
+# Print list of unmatched cities
 if unmatched_cities:
-    print("未匹配城市列表：")
+    print("List of unmatched cities:")
     for city, country in unmatched_cities:
         print(f"{city}, {country}")

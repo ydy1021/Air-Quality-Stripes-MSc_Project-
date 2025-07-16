@@ -1,4 +1,4 @@
-// PM2.5色阶区间和颜色
+// PM2.5 concentration intervals and colors
 export const bounds = [0, 5, 10, 15, 20, 30, 40, 50, 60, 70, 80, 90, 99999];
 export const c_list = [
   'rgb(164,255,255)',  // 0 - 5

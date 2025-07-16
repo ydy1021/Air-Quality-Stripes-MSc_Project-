@@ -18,7 +18,7 @@ class PM25DataLoader {
       console.log('Data points:', this.data.data.length);
       console.log('Grid info:', this.data.metadata);
       
-      // 创建快速查找的网格数据结构
+      // Create grid data structure for fast lookup
       this.createGridLookup();
       this.isLoaded = true;
       return true;
@@ -30,7 +30,7 @@ class PM25DataLoader {
   }
 
   createGridLookup() {
-    // 创建一个基于坐标的快速查找表
+    // Create a coordinate-based lookup table
     this.gridData = new Map();
     
     for (const point of this.data.data) {
@@ -46,13 +46,13 @@ class PM25DataLoader {
       return null;
     }
 
-    // 首先尝试精确匹配
+    // Try exact match first
     const exactKey = `${lat.toFixed(2)}_${lon.toFixed(2)}`;
     if (this.gridData.has(exactKey)) {
       return this.gridData.get(exactKey);
     }
 
-    // 如果没有精确匹配，找最近的点
+    // If no exact match, find the nearest point
     let minDistance = Infinity;
     let closestValue = null;
 
@@ -66,17 +66,17 @@ class PM25DataLoader {
         closestValue = point.value;
       }
       
-      // 如果距离很小，直接返回
+      // If distance is very small, return immediately
       if (distance < 0.1) {
         break;
       }
     }
 
-    // 只返回距离合理的值（不超过1度）
+    // Only return values within reasonable distance (less than 1 degree)
     return minDistance < 1.0 ? closestValue : null;
   }
 
-  // 获取数据统计信息
+  // Get data statistics
   getDataStats() {
     if (!this.isLoaded) return null;
     

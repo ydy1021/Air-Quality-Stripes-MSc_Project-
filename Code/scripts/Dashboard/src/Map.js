@@ -27,13 +27,13 @@ function Map({ onCitySelect, selectedCities, maxCities = 2 }) {
   const [lastMouse, setLastMouse] = useState({ x: 0, y: 0 });
   const projectionRef = useRef(null);
 
-  // 获取地理位置的PM2.5值
+  // Get PM2.5 value for a geographic location
   const getPM25ForLocation = (lat, lon) => {
     if (!pm25Loader) return null;
     return pm25Loader.getPM25Value(lat, lon);
   };
 
-  // 加载数据
+  // Load data
   useEffect(() => {
     const loadData = async () => {
       try {
@@ -51,7 +51,7 @@ function Map({ onCitySelect, selectedCities, maxCities = 2 }) {
           setCities(citiesData);
         }
 
-        // 加载PM2.5数据
+        // Load PM2.5 data
         const loader = new PM25DataLoader();
         const success = await loader.loadData();
         if (success) {
@@ -71,7 +71,7 @@ function Map({ onCitySelect, selectedCities, maxCities = 2 }) {
     loadData();
   }, []);
 
-  // 鼠标事件处理
+  // Mouse event handlers
   const handleMouseDown = (event) => {
     setIsDragging(true);
     setLastMouse({ x: event.clientX, y: event.clientY });
@@ -116,7 +116,7 @@ function Map({ onCitySelect, selectedCities, maxCities = 2 }) {
     }
   };
 
-  // 缩放控制函数
+  // Zoom control functions
   const handleZoomIn = () => {
     setTransform(prev => ({
       ...prev,
@@ -135,7 +135,7 @@ function Map({ onCitySelect, selectedCities, maxCities = 2 }) {
     setTransform({ k: 1, x: 0, y: 0 });
   };
 
-  // 绘制地图
+  // Render map
   useEffect(() => {
     if (!world || !world.features || !cities.length || isLoading || !svgRef.current || !canvasRef.current) return;
     
@@ -143,21 +143,21 @@ function Map({ onCitySelect, selectedCities, maxCities = 2 }) {
       const width = 1000, height = 500;
       const svg = d3.select(svgRef.current);
       
-      // 清除之前的内容
+      // Clear previous content
       svg.selectAll('*').remove();
       
-      // 设置SVG尺寸
+      // Set SVG dimensions
       svg.attr('width', width).attr('height', height);
 
-      // 投影
+      // Projection
       const mapProjection = d3.geoNaturalEarth1().fitSize([width, height], world);
       const path = d3.geoPath().projection(mapProjection);
       projectionRef.current = mapProjection;
 
-      // 创建主要的g元素用于缩放变换
+      // Create main g element for zoom transformation
       const g = svg.append('g').attr('class', 'map-group');
 
-      // 绘制国家
+      // Draw countries
       g.append('g')
         .attr('class', 'countries')
         .selectAll('path')
@@ -188,7 +188,7 @@ function Map({ onCitySelect, selectedCities, maxCities = 2 }) {
           return countryName;
         });
 
-      // 绘制城市点
+      // Draw city points
       const citiesGroup = g.append('g').attr('class', 'cities');
       
       cities.forEach(city => {
@@ -199,10 +199,10 @@ function Map({ onCitySelect, selectedCities, maxCities = 2 }) {
             .attr('cy', projected[1])
             .attr('r', 5)
             .attr('fill', selectedCities.find(c => c.city === city.city && c.country === city.country) ? '#d32f2f' : '#1976d2')
-            .attr('fill-opacity', 0.7)  // 设置填充透明度为70%
+            .attr('fill-opacity', 0.7)  // Set fill opacity to 70%
             .attr('stroke', '#fff')
             .attr('stroke-width', 2)
-            .attr('stroke-opacity', 0.9)  // 设置边框透明度为90%
+            .attr('stroke-opacity', 0.9)  // Set stroke opacity to 90%
             .style('cursor', 'pointer')
             .on('click', () => {
               if (onCitySelect) onCitySelect(city);
@@ -217,10 +217,10 @@ function Map({ onCitySelect, selectedCities, maxCities = 2 }) {
         }
       });
 
-      // 应用变换
+      // Apply transformation
       g.attr('transform', `translate(${transform.x}, ${transform.y}) scale(${transform.k})`);
       
-      // 调整元素大小
+      // Adjust element sizes
       if (transform.k > 0) {
         citiesGroup.selectAll('circle')
           .attr('r', 5 / transform.k)
@@ -230,10 +230,10 @@ function Map({ onCitySelect, selectedCities, maxCities = 2 }) {
           .attr('stroke-width', 0.5 / transform.k);
       }
 
-      // 添加缩放控制按钮
+      // Add zoom control buttons
       const controls = svg.append('g')
         .attr('class', 'zoom-controls')
-        .raise();  // 将控制按钮组移到SVG的最上层
+        .raise();  // Move control buttons group to the top of SVG
       
       const buttonData = [
         { text: '+', action: handleZoomIn, title: 'Zoom in' },
@@ -266,7 +266,7 @@ function Map({ onCitySelect, selectedCities, maxCities = 2 }) {
         button.append('title').text(btn.title);
       });
 
-      // 初始渲染Canvas
+      // Initial Canvas render
       if (canvasRef.current && pm25Loader && pm25Loader.data) {
         try {
           const canvas = canvasRef.current;
@@ -286,7 +286,7 @@ function Map({ onCitySelect, selectedCities, maxCities = 2 }) {
     }
   }, [world, cities, selectedCities, onCitySelect, isLoading, transform, pm25Loader]);
 
-  // 添加全局鼠标事件监听器
+  // Add global mouse event listeners
   useEffect(() => {
     const handleGlobalMouseMove = (event) => handleMouseMove(event);
     const handleGlobalMouseUp = () => handleMouseUp();
@@ -302,7 +302,7 @@ function Map({ onCitySelect, selectedCities, maxCities = 2 }) {
     };
   }, [isDragging, lastMouse]);
 
-  // 添加wheel事件监听器
+  // Add wheel event listener
   useEffect(() => {
     const svg = svgRef.current;
     if (!svg) return;
@@ -331,7 +331,7 @@ function Map({ onCitySelect, selectedCities, maxCities = 2 }) {
           onMouseDown={handleMouseDown}
         />
         
-        {/* Canvas渲染PM2.5网格 */}
+        {/* Canvas for rendering PM2.5 grid */}
         <canvas
           ref={canvasRef}
           width={1000}
@@ -345,9 +345,6 @@ function Map({ onCitySelect, selectedCities, maxCities = 2 }) {
           }}
         />
       </div>
-      {/* <div style={{marginTop: 8, color: '#888'}}>
-        拖拽平移，滚轮缩放，点击按钮控制 - 缩放比例: {transform.k.toFixed(2)}x
-      </div> */}
     </div>
   );
 }

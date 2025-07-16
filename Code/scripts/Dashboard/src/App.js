@@ -9,12 +9,12 @@ function App() {
   const [selectedCities, setSelectedCities] = useState([]);
   const [mode, setMode] = useState('compare'); // 'compare' or 'multi'
 
-  // 选择或取消城市
+  // Select or deselect a city
   const handleCitySelect = (city) => {
     setSelectedCities(prev => {
       const exists = prev.find(c => c.city === city.city && c.country === city.country);
       if (exists) {
-        // 如果已选，点击则移除
+        // If already selected, remove it
         return prev.filter(c => !(c.city === city.city && c.country === city.country));
       }
       const max = mode === 'multi' ? 3 : 2;
@@ -23,7 +23,7 @@ function App() {
     });
   };
 
-  // 切换模式时清空已选城市
+  // Clear selected cities when switching modes
   const handleModeChange = (newMode) => {
     setMode(newMode);
     setSelectedCities([]);
@@ -38,7 +38,7 @@ function App() {
           <button onClick={() => handleModeChange('multi')} disabled={mode === 'multi'}>Multi Mode</button>
         </div>
         <ColorLegend />
-        <div style={{ marginTop: '80px' }}> {/* 添加这个容器来移动地图 */}
+        <div style={{ marginTop: '80px' }}> {/* Container to move the map down */}
           <Map onCitySelect={handleCitySelect} selectedCities={selectedCities} maxCities={mode === 'multi' ? 3 : 2} />
           {mode === 'compare'
             ? <TrendChart selectedCities={selectedCities} />
