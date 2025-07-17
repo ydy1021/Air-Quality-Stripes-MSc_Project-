@@ -13,7 +13,7 @@ cities_json_dir = "cities_json"
 target_city = "London, United Kingdom"
 
 # ====== 3) Specify the output folder for the animation ======
-output_dir = r"E:\Master2\FYP\Global\Global\JsonVersion"
+output_dir = "."  # Current directory
 os.makedirs(output_dir, exist_ok=True)
 
 # ====== 4) Locate the corresponding JSON file ======
