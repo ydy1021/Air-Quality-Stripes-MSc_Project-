@@ -7,29 +7,11 @@ This tool is part of the Air Quality Stripes project extension, providing an int
 The tool uses data from the Air Quality Stripes project:
 - `V1pt6_Cities_Data_PM2pt5.csv`: Contains historical PM2.5 data for various cities
 
-## Project Structure
-
-### Data Processing Scripts (For Reference Only)
-
-The Python scripts in this folder are provided for reference to show the data processing workflow:
-
-1. `check_data_structure.py`
-   - Validates the structure and integrity of PM2.5 data
-   - Ensures data consistency across different cities
-
-2. `extract_pm25_2022.py`
-   - Extracts and processes PM2.5 data for the year 2022
-   - Updates the dataset with the latest available information
-
-3. `generate_cities_with_coords.py`
-   - Generates city coordinates for visualization
-   - Maps cities from the PM2.5 dataset to their geographical locations
-
-### Main Application (`static_pm25_visualizer.py`)
+## Main Application (`static_pm25_visualizer.py`)
 
 A GUI application built with Python and Tkinter that provides:
 
-#### Key Features
+### Key Features
 - Interactive city search and selection
 - Birth year-based PM2.5 analysis
 - Customized visualization generation
@@ -39,7 +21,7 @@ A GUI application built with Python and Tkinter that provides:
   - WHO standard comparisons
   - Change percentage calculations
 
-#### Technical Implementation
+### Technical Implementation
 - Built with Python Tkinter for the GUI
 - Uses Matplotlib for visualization
 - Custom color mapping for PM2.5 levels
