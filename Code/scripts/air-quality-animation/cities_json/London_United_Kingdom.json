@@ -697,15 +697,27 @@
   ],
   "bubbles": [
     {
-      "year": 1850,
-      "text": "aaaaaaaaaaaaaaa",
+      "year": 1870,
+      "text": "Industrial revolution caused increasing pollution",
       "offset_x": 5,
       "offset_y": 10
     },
     {
-      "year": 1900,
-      "text": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "year": 1916,
+      "text": "Frequent smog events (\"pea soupers\")",
       "offset_x": 5,
+      "offset_y": -10
+    },
+    {
+      "year": 1952,
+      "text": "In 1952 the “Great Smog” resulted in up to 12000 deaths",
+      "offset_x": 5,
+      "offset_y": 10
+    },
+    {
+      "year": 2000,
+      "text": "Clean air legislation has led to improved air quality.",
+      "offset_x": -10,
       "offset_y": 10
     }
   ]
