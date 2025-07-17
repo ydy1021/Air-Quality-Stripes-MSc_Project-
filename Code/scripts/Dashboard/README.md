@@ -10,7 +10,9 @@ The dashboard utilizes data from the Air Quality Stripes project:
 
 ## Project Structure
 
-### Data Processing Scripts
+### Data Processing Scripts (For Reference Only)
+
+The following Python scripts were used to process the data. These scripts are provided for reference purposes only, as the processed data is already included in the project.
 
 1. `extract_pm25_2022.py`
    - Extracts and processes PM2.5 data for the year 2022
@@ -62,46 +64,20 @@ The dashboard is built using React and includes several key components:
 
 - **Frontend**: React.js
 - **Data Visualization**: D3.js, Mapbox GL
-- **Data Processing**: Python with pandas, numpy
 - **Styling**: CSS Modules
 
-## Deployment and Setup
+## Starting the Dashboard
 
-1. **Prerequisites**
-   ```bash
-   # Install Python dependencies
-   pip install pandas numpy matplotlib
+```bash
+# Install dependencies
+cd Dashboard
+npm install
 
-   # Install Node.js dependencies
-   cd Dashboard
-   npm install
-   ```
-
-2. **Data Preparation**
-   ```bash
-   # Run data processing scripts
-   python extract_pm25_2022.py
-   python generate_cities_with_coords_new.py
-   python check_data_structure.py
-   ```
-
-3. **Starting the Dashboard**
-   ```bash
-   # Development mode
-   npm start
-
-   # Production build
-   npm run build
-   ```
+# Start the development server
+npm start
+```
 
 The dashboard will be available at `http://localhost:3000` by default.
-
-## Configuration
-
-Key configuration files:
-- `src/constants.js`: Global constants and API endpoints
-- `package.json`: Project dependencies and scripts
-- `public/index.html`: HTML template
 
 ## Browser Compatibility
 
@@ -109,11 +85,4 @@ The dashboard is optimized for modern browsers:
 - Chrome (recommended)
 - Firefox
 - Safari
-- Edge
-
-## Contributing
-
-When contributing to this project:
-1. Ensure data processing scripts are run before making changes
-2. Test visualizations across different screen sizes
-3. Verify data integrity with `check_data_structure.py` 
+- Edge 
