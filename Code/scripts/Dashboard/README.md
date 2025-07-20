@@ -2,6 +2,8 @@
 
 This dashboard is an extension of the Air Quality Stripes project, providing interactive visualizations and analysis tools for PM2.5 data across global cities.
 
+![Dashboard](Dashboard.png)
+
 ## Data Sources
 
 The dashboard utilizes data from the Air Quality Stripes project:
