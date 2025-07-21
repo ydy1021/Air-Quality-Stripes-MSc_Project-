@@ -8,7 +8,7 @@ Building upon this foundation, our project combines advanced data science techni
 
 - [Overview](#overview)
 - [Project Structure](#project-structure)
-- [Technology Stack](#technology stack)
+- [Technology Stack](#technology-stack)
 - [Quick Start](#quick-start)
 - [Components](#components)
   - [Data Processing Scripts](#data-processing-scripts)
