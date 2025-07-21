@@ -2,6 +2,10 @@
 
 This tool is designed to create animated visualizations of historical PM2.5 data for cities worldwide, with the ability to add annotated explanations at key points in time.
 
+![GUI](aqs_animation_GUI_1.png)
+
+![animation](aqs_ani_2.png)
+
 ## Project Structure
 
 - `cities_json/`: Directory containing JSON files for each city with PM2.5 data and annotations

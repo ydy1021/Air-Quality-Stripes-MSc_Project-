@@ -2,6 +2,8 @@
 
 This tool is part of the Air Quality Stripes project extension, providing an interactive interface for analyzing PM2.5 data and generating static visualizations with birth year analysis.
 
+![GUI](aqs_static_1.png)
+
 ## Data Sources
 
 The tool uses data from the Air Quality Stripes project:
