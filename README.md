@@ -86,7 +86,7 @@ Core Python scripts for PM2.5 data processing:
 These scripts handle NetCDF climate data files and prepare processed data for visualization components.
 
 ### 2. Static Visualization
-**Location**: [`Code/scripts/air-quality-static-ui/`](./Code/scripts/air-quality-static-ui/)
+**Location**: `Code/scripts/air-quality-static-ui/`
 
 Generate static PM2.5 visualizations and charts:
 - City-specific air quality trends
@@ -99,7 +99,7 @@ Generate static PM2.5 visualizations and charts:
 - Multiple visualization types
 
 ### 3. Interactive Dashboard
-**Location**: [`Code/scripts/Dashboard/`](./Code/scripts/Dashboard/)
+**Location**: `Code/scripts/Dashboard/`
 
 A React-based interactive dashboard for exploring PM2.5 data:
 
@@ -119,7 +119,7 @@ npm start
 **View Dashboard**: Open [http://localhost:3000](http://localhost:3000) after running `npm start`
 
 ### 4. Animation Features
-**Location**: [`Code/scripts/air-quality-animation/`](./Code/scripts/air-quality-animation/)
+**Location**: `Code/scripts/air-quality-animation/`
 
 Animated visualizations showing temporal changes in air quality.
 
@@ -145,8 +145,8 @@ npm start
 
 ### 3. Data Requirements
 - PM2.5 NetCDF data files
-- City coordinates data ([`worldcities/`](./Code/scripts/Dashboard/worldcities/))
-- PM2.5 cities dataset ([`V1pt6_Cities_Data_PM2pt5.csv`](./Code/scripts/Dashboard/V1pt6_Cities_Data_PM2pt5.csv))
+- City coordinates data (`worldcities/` directory)
+- PM2.5 cities dataset (`V1pt6_Cities_Data_PM2pt5.csv`)
 
 ## 📖 Usage
 
@@ -174,10 +174,10 @@ npm start
 
 
 ### Work Planning
-Project timeline and milestones are documented in [`Work plan/`](./Work%20plan/), including Gantt charts and deliverable schedules.
+Project timeline and milestones are documented in the `Work plan/` directory, including Gantt charts and deliverable schedules.
 
 ### Meeting Records
-Weekly progress meetings and discussions are recorded in [`Weekly meeting/`](./Weekly%20meeting/).
+Weekly progress meetings and discussions are recorded in the `Weekly meeting/` directory.
 
 ## 📊 Data Sources
 
@@ -188,13 +188,13 @@ Weekly progress meetings and discussions are recorded in [`Weekly meeting/`](./W
 
 ## 🤝 Contributing
 
-This is a MSc Project repository. The codebase in [`Code/`](./Code/) represents the main implementation, while [`Learning/`](./Learning/) contains development progress for reference.
+This is a MSc Project repository. The codebase in `Code/` represents the main implementation, while `Learning/` contains development progress for reference.
 
 ### Development Workflow
-1. Main implementation: [`Code/scripts/`](./Code/scripts/)
-2. Progress tracking: [`Learning/`](./Learning/)
-3. Planning: [`Work plan/`](./Work%20plan/)
-4. Documentation: [`Weekly meeting/`](./Weekly%20meeting/)
+1. Main implementation: `Code/scripts/`
+2. Progress tracking: `Learning/`
+3. Planning: `Work plan/`
+4. Documentation: `Weekly meeting/`
 
 ## 📄 License
 
@@ -206,4 +206,4 @@ For questions about this project, please refer to the weekly meeting records or 
 
 ---
 
-**Note**: The [`Learning/`](./Learning/) directory contains the author's personal development notes and progress records, mirroring the implementation found in [`Code/`](./Code/). Both directories contain similar content but serve different purposes in the project documentation workflow. 
+**Note**: The `Learning/` directory contains the author's personal development notes and progress records, mirroring the implementation found in `Code/`. Both directories contain similar content but serve different purposes in the project documentation workflow. 
