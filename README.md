@@ -38,10 +38,6 @@ This project provides a complete solution for PM2.5 (particulate matter ≤ 2.5 
 │       ├── 📂 air-quality-static-ui/     # Static visualization generator
 │       ├── 📂 air-quality-animation/     # Animation components
 │       └── 📂 Dashboard/                 # Interactive React dashboard
-├── 📂 Learning/                # Weekly project progress records
-│   ├── 📂 Week1_0127_0203/
-│   ├── 📂 Week2_0203_0210/
-│   └── 📂 ...                  # Additional weekly progress
 ├── 📂 Work plan/               # Project planning and Gantt charts
 ├── 📂 Weekly meeting/          # Meeting records and discussions
 └── 📄 README.md               # This file
@@ -188,13 +184,12 @@ Weekly progress meetings and discussions are recorded in the `Weekly meeting/` d
 
 ## 🤝 Contributing
 
-This is a MSc Project repository. The codebase in `Code/` represents the main implementation, while `Learning/` contains development progress for reference.
+This is a MSc Project repository. The codebase in `Code/` represents the main implementation.
 
 ### Development Workflow
 1. Main implementation: `Code/scripts/`
-2. Progress tracking: `Learning/`
-3. Planning: `Work plan/`
-4. Documentation: `Weekly meeting/`
+2. Planning: `Work plan/`
+3. Documentation: `Weekly meeting/`
 
 ## 📄 License
 
@@ -204,6 +199,4 @@ This project is developed as part of a MSc Project for academic purposes.
 
 For questions about this project, please refer to the weekly meeting records or project documentation.
 
----
-
-**Note**: The `Learning/` directory contains the author's personal development notes and progress records, mirroring the implementation found in `Code/`. Both directories contain similar content but serve different purposes in the project documentation workflow. 
+--- 
