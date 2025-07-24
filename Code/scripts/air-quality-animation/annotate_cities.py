@@ -8,23 +8,53 @@ import tkinter as tk
 from tkinter import messagebox
 
 # —— Configuration ——
-JSON_DIR = 'cities_json'   # Directory to store JSON files for each city
+JSON_DIR = 'cities_json'  # Directory containing JSON files for each city
+
+
 # —— end Configuration ——
 
 def compute_offset(pm25, year):
     """
-    Compute offset based on PM2.5 value and year (example heuristic strategy):
-      - Initial horizontal offset ox=5;
-      - If 2000–2010: ox-=15; if >2010: ox-=25; if <2000: unchanged;
-      - Vertical offset oy: if PM2.5 > 60 then -10, else +10.
+    Calculate offset based on PM2.5 value and year, intelligently avoiding trend lines:
+
+    Improved strategy: Based primarily on actual PM2.5 values rather than assuming fixed historical patterns
+    Because industrialization and governance processes vary greatly across regions
     """
-    ox = 5
-    if 2000 <= year <= 2010:
-        ox -= 15
-    elif year > 2010:
-        ox -= 25
-    oy = -10 if pm25 > 60 else 10
+    # Horizontal offset: Adjusted by year to avoid crowding on the time axis
+    if year < 1900:
+        ox = -20  # Early years shift left
+    elif year < 1950:
+        ox = 5  # Mid-period years shift slightly right
+    elif year < 2000:
+        ox = -15  # Later years shift left
+    else:
+        ox = -25  # Modern years shift more left
+
+    # Vertical offset: Mainly based on PM2.5 values, intelligently avoiding trend lines
+    if pm25 <= 15:
+
+        oy = 45
+    elif pm25 <= 30:
+
+        oy = 35
+    elif pm25 <= 50:
+
+        oy = 20
+    elif pm25 <= 80:
+
+        if year < 1950:
+            oy = -25
+        else:
+            oy = 10
+    elif pm25 <= 120:
+
+        oy = -30
+    else:
+
+        oy = 40
+
     return ox, oy
+
 
 class App:
     def __init__(self, root):
@@ -52,17 +82,17 @@ class App:
 
         tk.Label(frm, text="Search city or country:").pack(anchor='w')
         self.ent_search = tk.Entry(frm)
-        self.ent_search.pack(fill='x', pady=(0,5))
-        # Enter key is equivalent to clicking Search
+        self.ent_search.pack(fill='x', pady=(0, 5))
+        # Enter key acts the same as clicking Search
         self.ent_search.bind('<Return>', lambda e: self.do_search())
 
-        tk.Button(frm, text="Search", command=self.do_search).pack(pady=(0,5))
+        tk.Button(frm, text="Search", command=self.do_search).pack(pady=(0, 5))
 
         self.lst_cities = tk.Listbox(frm, height=6)
         self.lst_cities.pack(fill='x')
         self.lst_cities.bind("<<ListboxSelect>>", self.on_city_select)
 
-        # —— Detail area (initially hidden) ——
+        # —— Details area (initially hidden) ——
         self.frm_det = tk.Frame(root)
 
         # Selected city
@@ -100,7 +130,7 @@ class App:
         self.populate_city_list(self.index)
 
     def safe_match(self, s, term):
-        """Case-insensitive, punctuation-agnostic check if term is in s"""
+        """Case-insensitive, ignores punctuation, checks if term is in s"""
         return term in re.sub(r'[^\w]', ' ', s.lower())
 
     def populate_city_list(self, items):
@@ -114,7 +144,7 @@ class App:
         """Handle search action"""
         term = self.ent_search.get().strip().lower()
         if not term:
-            messagebox.showinfo("Info", "Please enter a search keyword")
+            messagebox.showinfo("Info", "Please enter search keywords")
             return
         matched = [it for it in self.index
                    if self.safe_match(it['city'], term) or self.safe_match(it['country'], term)]
@@ -124,7 +154,7 @@ class App:
         self.populate_city_list(matched)
 
     def on_city_select(self, _):
-        """After a city is selected, show detail area and load its existing bubbles"""
+        """After user selects a city, show details area and load existing bubbles for that city"""
         sel = self.lst_cities.curselection()
         if not sel:
             return
@@ -135,7 +165,7 @@ class App:
         self.frm_det.pack(padx=10, pady=10, fill='both', expand=True)
 
     def back_to_search(self):
-        """Return to search view and reset detail area"""
+        """Return to search page, reset details area"""
         self.frm_det.pack_forget()
         self.lst_ann.delete(0, tk.END)
         self.ent_year.delete(0, 'end')
@@ -145,7 +175,7 @@ class App:
         self.btn_delete.pack_forget()
 
     def load_annotations(self):
-        """Load existing bubbles from JSON and populate list"""
+        """Load existing bubbles from JSON and populate the list"""
         path = os.path.join(JSON_DIR, self.selected['fname'])
         with open(path, 'r', encoding='utf-8') as f:
             self.obj = json.load(f)
@@ -157,23 +187,25 @@ class App:
             self.lst_ann.insert(tk.END, f"{a['year']} → {short}")
 
     def on_ann_select(self, _):
-        """Fill inputs when a bubble is selected, and switch to Update/Delete"""
+        """After selecting a bubble, fill input fields and switch to Update/Delete mode"""
         idx = self.lst_ann.curselection()
         if not idx:
             return
         a = self.obj.get('bubbles', [])[idx[0]]
-        self.ent_year.delete(0, 'end'); self.ent_year.insert(0, str(a['year']))
-        self.txt_text.delete('1.0', 'end'); self.txt_text.insert('1.0', a['text'])
+        self.ent_year.delete(0, 'end');
+        self.ent_year.insert(0, str(a['year']))
+        self.txt_text.delete('1.0', 'end');
+        self.txt_text.insert('1.0', a['text'])
         self.btn_add.config(state='disabled')
         self.btn_update.pack(side='left', padx=5)
         self.btn_delete.pack(side='left', padx=5)
 
     def add_annotation(self):
-        """Add a new bubble"""
+        """Add new bubble"""
         self._save_annotation(mode='add')
 
     def update_annotation(self):
-        """Update an existing bubble"""
+        """Update existing bubble"""
         self._save_annotation(mode='update')
 
     def delete_annotation(self):
@@ -185,7 +217,8 @@ class App:
         ann = [a for a in self.obj.get('bubbles', []) if a['year'] != year]
         self.obj['bubbles'] = sorted(ann, key=lambda x: x['year'])
         self._write_json()
-        messagebox.showinfo("Done", f"Bubble for {year} deleted.")
+        messagebox.showinfo("Done", f" {year} has been deleted")
+        # Reload list and reset buttons
         self.load_annotations()
         self.btn_update.pack_forget()
         self.btn_delete.pack_forget()
@@ -194,24 +227,24 @@ class App:
         self.txt_text.delete('1.0', 'end')
 
     def _save_annotation(self, mode):
-        """Internal: add or update bubbles and write back to JSON"""
+        """Internal: Add or update bubbles and write back to JSON"""
         try:
             year = int(self.ent_year.get().strip())
             text = self.txt_text.get('1.0', 'end').strip()
             if not text:
                 raise ValueError
         except:
-            messagebox.showerror("Error", "Please enter a valid year and non-empty text")
+            messagebox.showerror("Error", "Please enter valid year and non-empty text")
             return
 
-        # Find PM2.5 for the year
+        # Find PM2.5 for that year
         pm25 = None
         for rec in self.obj.get('data', []):
             if rec.get('year') == year:
                 pm25 = rec.get('value')
                 break
         if pm25 is None:
-            messagebox.showerror("Error", f"No data found for year {year}")
+            messagebox.showerror("Error", f"Data for year {year} does not exist")
             return
 
         ox, oy = compute_offset(pm25, year)
@@ -221,6 +254,7 @@ class App:
         self._write_json()
         messagebox.showinfo("Success",
                             f"{mode.title()} successful: {year}\noffset=({ox}, {oy})")
+        # Reload and restore to add mode
         self.load_annotations()
         self.btn_update.pack_forget()
         self.btn_delete.pack_forget()
@@ -229,15 +263,16 @@ class App:
         self.txt_text.delete('1.0', 'end')
 
     def _write_json(self):
-        """Write JSON file back"""
+        """Write back to JSON file"""
         path = os.path.join(JSON_DIR, self.selected['fname'])
         with open(path, 'w', encoding='utf-8') as f:
             json.dump(self.obj, f, ensure_ascii=False, indent=2)
 
+
 if __name__ == '__main__':
     root = tk.Tk()
 
-    # —— Set initial window size and center ——
+    # —— Set initial window size and center it ——
     win_w, win_h = 600, 500
     root.update_idletasks()
     screen_w = root.winfo_screenwidth()
