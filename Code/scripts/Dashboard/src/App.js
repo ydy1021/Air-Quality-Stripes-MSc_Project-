@@ -14,12 +14,21 @@ function App() {
     setSelectedCities(prev => {
       const exists = prev.find(c => c.city === city.city && c.country === city.country);
       if (exists) {
-        // If already selected, remove it
+        // If already selected, remove it when clicked
         return prev.filter(c => !(c.city === city.city && c.country === city.country));
       }
-      const max = mode === 'multi' ? 3 : 2;
-      if (prev.length === max) return prev;
-      return [...prev, city];
+      
+      if (mode === 'multi') {
+        if (prev.length === 3) {
+          // If 3 cities are already selected, remove the first one and add the new one
+          return [...prev.slice(1), city];
+        }
+        return [...prev, city];
+      } else {
+        // Keep original logic in compare mode
+        if (prev.length === 2) return prev;
+        return [...prev, city];
+      }
     });
   };
 
@@ -38,7 +47,7 @@ function App() {
           <button onClick={() => handleModeChange('multi')} disabled={mode === 'multi'}>Multi Mode</button>
         </div>
         <ColorLegend />
-        <div style={{ marginTop: '80px' }}> {/* Container to move the map down */}
+        <div style={{ marginTop: '80px' }}> {/* Add this container to move the map */}
           <Map onCitySelect={handleCitySelect} selectedCities={selectedCities} maxCities={mode === 'multi' ? 3 : 2} />
           {mode === 'compare'
             ? <TrendChart selectedCities={selectedCities} />
