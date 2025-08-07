@@ -36,15 +36,16 @@ def calculate_years_of_life_lost(pm25_values):
     """
     Calculate Years of Life Lost (YLL)
     Based on research: For every 10μg/m³ increase in PM2.5, average life expectancy decreases by about 0.6 years
+    This calculation uses average long-term exposure rather than cumulative annual losses
     """
     # WHO recommended safe level is 5μg/m³
     safe_level = 5.0
-    # Calculate excess above safe level
+    # Calculate excess above safe level for each year
     excess_pm25 = np.maximum(0, pm25_values - safe_level)
-    # 0.6 years lost per 10μg/m³
-    years_lost_per_year = excess_pm25 / 10.0 * 0.6
-    # Cumulative years lost (assuming annual losses accumulate)
-    total_years_lost = np.sum(years_lost_per_year)
+    # Calculate average excess exposure over the lifetime
+    avg_excess = np.mean(excess_pm25)
+    # 0.6 years lost per 10μg/m³ based on average long-term exposure
+    total_years_lost = avg_excess / 10.0 * 0.6
     return total_years_lost
 
 # ========== Generate Static Chart ==========
